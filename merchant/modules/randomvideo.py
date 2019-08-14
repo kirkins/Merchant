@@ -11,10 +11,10 @@ from merchant.helpers import ReplyCheck
 
 
 def get_video():
-    seed = str(randint(0, 100000000));
-    url = "https://hooktube.com/random?" + seed;
+    seed = str(randint(0, 100000000))
+    url = "https://hooktube.com/random?" + seed
     r = requests.get(url)
-    return r.url.replace("hooktube", "youtube", 1);
+    return r.url.replace("hooktube", "youtube", 1)
 
 
 @BOT.on_message(Filters.regex("(?i)(post|get|send) (random) (youtube|hooktube|video)"))
