@@ -6,40 +6,40 @@ from merchant.helpers import ReplyCheck
 
 
 def define_word_ud(word):
-    def get_data(word):
+    def get_data(word_):
         r = requests.get(
-            "http://api.urbandictionary.com/v0/define?term={}".format(word)
+            "http://api.urbandictionary.com/v0/define?term={}".format(word_)
         )
         if r.status_code == 200:
-            data = r.json()
-            return data
+            data_ = r.json()
+            return data_
 
-    def get_definitions(data):
-        definitions = []
-        for definition in data["list"]:
-            definitions.append(
+    def get_definitions(data_):
+        definitions_ = []
+        for definition in data_["list"]:
+            definitions_.append(
                 "{}\t{}\t{}".format(
                     definition["word"], definition["definition"], definition["example"]
                 )
             )
         return definitions
 
-    def get_five_results(definitions):
-        five_definitions = ""
-        for i in range(5):
-            definition = definitions[i].split("\t")
-            word = definition[0]
-            definition_ = definition[1]
-            example = definition[2]
-            five_definitions = "{}\n**{}**\n{}\n\nExample:\n{}\n\n".format(
-                five_definitions, word, definition_, example
+    def get_results(deft):
+        definitions_ = ""
+        for i in range(3):
+            definition = definitions_[i].split("\t")
+            word_ = deft[0]
+            definition_ = deft[1]
+            example = deft[2]
+            definitions_ = "{}\n**{}**\n{}\n\nExample:\n{}\n\n".format(
+                definition, word_, definition_, example
             )
-        return five_definitions
+        return definitions_
 
     data = get_data(word)
     definitions = get_definitions(data)
-    five_definitions = get_five_results(definitions)
-    return five_definitions
+    definitions__ = get_results(definitions)
+    return definitions__
 
 
 @BOT.on_message(Filters.command("ud", "/") & ~Filters.edited)

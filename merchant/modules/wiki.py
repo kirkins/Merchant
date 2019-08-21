@@ -10,8 +10,8 @@ supported_langs = ['en', 'et', 'fr', 'nl', 'sv', 'da', 'la', 'mt', 'ro', 'sl', '
 def wikipedia_summary(topic, lang='en'):
     wikipedia = MediaWiki(lang=lang)
     search = wikipedia.search(topic)
-    page = wikipedia.page(search[0])
-    text = '**{}**\n\n{}\n**Read more at:** [{}]({})'.format(page.title, page.summary, page.title, page.url)
+    summary = wikipedia.summary(search[0])
+    text = '**{}**\n\n{}\n**Read more at:** [{}]({})'.format(page.title, summary, page.title, page.url)
     return text
 
 
