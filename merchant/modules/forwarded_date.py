@@ -24,7 +24,7 @@ def get_month(message):
     return switcher.get(int_month)
 
 
-@BOT.on_message(Filters.reply & Filters.command(commands=['sentdate', 'sentdate@videomerchantbot'], prefix='/'))
+@BOT.on_message(Filters.reply & Filters.command(commands=['sentdate', 'sentdate@videomerchantbot'], prefixes='/'))
 async def get_forwarded_message_date(bot: BOT, message: Message):
     year = datetime.utcfromtimestamp(message.reply_to_message.forward_date).strftime('%Y')
     month = get_month(message)
