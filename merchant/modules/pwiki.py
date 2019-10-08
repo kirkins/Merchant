@@ -809,7 +809,7 @@ def wikipedia_summary(topic):
         return text
 
 
-@BOT.on_message(Filters.command(commands="pwiki", prefix="/") & ~Filters.edited)
+@BOT.on_message(Filters.command(commands="pwiki", prefixes="/") & ~Filters.edited)
 async def pwiki(bot: BOT, message: Message):
     drug = ' '.join(message.command[1:])
     text = get_drug(drug)
